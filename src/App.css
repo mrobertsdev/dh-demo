@@ -342,13 +342,13 @@ body.desktop-menu-open .container-footer-wrap {
 .con-class.page--mapped .topbar > .topbar-right > li.nav-dailyhive a {
   background-image: url(http://dailyhive.com/assets/dh_logos-a6678af8cab0ce4030fa27989f65a21e843b95cb6e8627185afb7b89ea595562.svg);
   background-position: 0 -92px;
-  background-size: 183%;
+  background-size: 190%;
 }
 .con-class.page--grow .topbar > .topbar-right > li.nav-dished a,
 .con-class.page--urbanized .topbar > .topbar-right > li.nav-dished a,
 .con-class.page--mapped .topbar > .topbar-right > li.nav-dished a {
   background-image: url(http://dailyhive.com/assets/dished-0c2b70e0c0b3fe5183c654e23862a137388e7167c912cf28c595ebdebace770d.svg);
-  background-position: 0 -952px;
+  background-position: 0 -954px;
   background-size: 131%;
 }
 .con-class.page--grow .topbar > .topbar-right > li.nav-grow a,
