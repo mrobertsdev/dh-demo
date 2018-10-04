@@ -1,0 +1,586 @@
+/* Setup */
+body {
+  overflow-y: scroll; /* Fixes glitch from scrollbars popping in and out while React is rerendering*/
+  overflow-x: auto;
+}
+
+/* General */
+hr {
+  border-bottom: 1px solid rgba(0,0,0,.085);
+}
+p.text-indent {
+  text-indent: 40px;
+}
+
+/* let's throw the media queries at the top */
+.header-desktop {
+  display: none;
+}
+.header-mobile {
+  display: block;
+}
+@media screen and (min-width: 1080px) {
+  .header-mobile {
+    display: none !important;
+  }
+  .header-desktop {
+    display: block !important;
+  }
+  .container-header-wrap {
+    height: 98px !important;
+  }
+}
+
+/* Layout */
+.root, .container,
+.container, .container-inner-wrap,
+.container-header-wrap, main, .topbar {
+  width: 100%;
+}
+.root, .container {
+  height: 100%;
+}
+.root, .container,
+.container-header-wrap {
+  padding: 0;
+  margin: 0;
+}
+main {
+  padding: 30px 0 15px;
+  margin: 0;
+}
+.container-inner-wrap {
+  margin: 0 auto;
+  max-width: 1080px;
+  padding: 0 12px;
+  height: 100%;
+}
+.container-header-wrap {
+  border-bottom: 1px solid rgba(0,0,0,.085);
+  transition: box-shadow .3s linear;
+  transition: background linear .3s;
+}
+.container, .container-header-wrap, main {
+  position: relative;
+}
+main, .container-mid-body-wrap > span.shade {
+  opacity: 1;
+  transition: opacity linear .25s;
+}
+.container-mid-body-wrap {
+  position: relative;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  min-height: 400px;
+}
+.container-mid-body-wrap > span.shade {
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,.025);
+  transition: background-color linear .3s;
+  border-bottom: 1px solid rgba(0,0,0,.025);
+}
+body.desktop-menu-open .container-header-wrap {
+  box-shadow: 2px 2px 2px 0 rgba(0,0,0,.025);
+}
+body.desktop-menu-open .container-mid-body-wrap > span.shade {
+  visibility: visible;
+}
+body.desktop-menu-open main,
+body.desktop-menu-open .container-footer-wrap {
+  opacity: .8;
+}
+
+/* Header */
+.topbar, .topbar > ul, .topbar > ul > li {
+  margin: 0;
+  padding: 0;
+}
+.topbar {
+  padding: 25px 0 0 0;
+  height: 100%;
+  max-height: 98px;
+}
+.topbar::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.topbar > ul {
+  list-style-type: none;
+  position: relative;
+}
+.topbar > ul > li {
+  display: table-cell;
+  vertical-align: middle;
+}
+.topbar > ul > li > a {
+  display: block;
+  padding: 8px 12px;
+  margin: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.topbar > .topbar-left {
+  float: left;
+  padding-right: 40px;
+  z-index: 999;
+}
+.topbar > .topbar-left > li > a {
+  width: 200px;
+  height: 45px;
+  background-image: url(http://dailyhive.com/assets/dh_cities_black-093173b8f9fab72e20e8453fff0eb31a8a6d3760ba950cb7a6f2502b4a5c2c9e.svg);
+  background-position: 0 -372px;
+  background-size: 100%;
+  margin: 0 20px 0 0;
+}
+.topbar > .topbar-right {
+  padding: 5px 35px 0 0;
+  z-index: 9;
+  float: right;
+}
+.topbar > .topbar-right > li > a {
+  display: block;
+  position: relative;
+  padding: .7rem 1rem;
+  height: 40px;
+  line-height: 1;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: grayscale(100%);
+  opacity: .4;
+  color: #444;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 8px 0 8px;
+}
+.topbar > .topbar-right > li > a:hover,
+.topbar > .topbar-right > li > a:active,
+.topbar > .topbar-right > li > a:focus {
+  filter: none;
+  opacity: 1;
+  transition: .5s;
+  color: #000;
+}
+.topbar > .topbar-right > li.nav-dailyhive a {
+  width: 150px;
+  background-image: url(http://dailyhive.com/assets/dh_cities_black-093173b8f9fab72e20e8453fff0eb31a8a6d3760ba950cb7a6f2502b4a5c2c9e.svg);
+  background-position: 0 3px;
+  background-size: 100%;
+}
+.topbar > .topbar-right > li.nav-dished a {
+  width: 120px;
+  background-image: url(http://dailyhive.com/assets/dished-0c2b70e0c0b3fe5183c654e23862a137388e7167c912cf28c595ebdebace770d.svg);
+  background-position: 0 -930px;
+  background-size: 133%;
+}
+.topbar > .topbar-right > li.nav-grow a {
+  width: 100px;
+  background-image: url(http://dailyhive.com/assets/dh_logos-a6678af8cab0ce4030fa27989f65a21e843b95cb6e8627185afb7b89ea595562.svg);
+  background-position: 0 -903px;
+  background-size: 190%;
+}
+.topbar > .topbar-right > li.nav-urbanized a {
+  width: 150px;
+  background-image: url(http://dailyhive.com/assets/urbanized-81353cb5c6f1e2bb96ee97b1f1364e4f7e42e3ee579e28e22033df7bac4ed89f.svg);
+  background-position: 0 -232px;
+  background-size: 177%;
+}
+.topbar > .topbar-right > li.nav-mapped a {
+  width: 120px;
+  background-image: url(http://dailyhive.com/assets/dh_logos-a6678af8cab0ce4030fa27989f65a21e843b95cb6e8627185afb7b89ea595562.svg);
+  background-position: 0 -911px;
+  background-size: 130%;
+}
+.topbar > .topbar-right > li.nav-video a {
+  width: 120px;
+  background-image: url(http://dailyhive.com/assets/dh_logos-a6678af8cab0ce4030fa27989f65a21e843b95cb6e8627185afb7b89ea595562.svg);
+  background-position: 0 -1173px;
+  background-size: 190%;
+}
+.topbar > .topbar-right .search-button {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 20px;
+  font-size: 18px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+/* Topbar Mobile */
+.topbar-mobile {
+  padding: 30px 0;
+}
+.topbar-mobile a {
+  display: block;
+  width: 190px;
+  height: 45px;
+  background-repeat: no-repeat;
+  background-image: url(http://dailyhive.com/assets/dh_cities_black-093173b8f9fab72e20e8453fff0eb31a8a6d3760ba950cb7a6f2502b4a5c2c9e.svg);
+  background-size: 100%;
+  margin: 0 auto;
+}
+
+/* Footer Stuff */
+.container-footer-wrap {
+  text-align: center;
+  padding-bottom: 1rem;
+}
+.footer-nav {
+  padding-top: 60px;
+}
+.footer-nav > ul, .footer-nav > p {
+  width: 100%;
+}
+.footer-nav > ul {
+  list-style-type: none;
+}
+.footer-nav > ul > li {
+  display: inline-block;
+  padding: 2px 5px;
+}
+.footer-nav > ul > li > a {
+  color: #444;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 15px;
+}
+.footer-nav > ul > li > a:hover,
+.footer-nav > ul > li > a:active,
+.footer-nav > ul > li > a:focus {
+  color: #000;
+  text-decoration: underline;
+}
+
+/* Change header based on which page is showing */
+.topbar-right .nav-dailyhive,
+.con-class.page--dished .topbar-right .nav-dished,
+.con-class.page--grow .topbar-right .nav-grow,
+.con-class.page--urbanized .topbar-right .nav-urbanized,
+.con-class.page--mapped .topbar-right .nav-mapped,
+.con-class.page--video .topbar-right .nav-video {
+  display: none;
+}
+.con-class.page--dished .topbar-right .nav-dailyhive,
+.con-class.page--grow .topbar-right .nav-dailyhive,
+.con-class.page--urbanized .topbar-right .nav-dailyhive,
+.con-class.page--mapped .topbar-right .nav-dailyhive,
+.con-class.page--video .topbar-right .nav-dailyhive {
+  display: table-cell;
+}
+.con-class.page--dished .container-header-wrap {
+  background: #37c4e8;
+}
+.con-class.page--grow .container-header-wrap {
+  background: #000;
+}
+.con-class.page--urbanized .container-header-wrap {
+  background: #3f4040;
+}
+.con-class.page--mapped .container-header-wrap {
+  background: #ff5f00;
+}
+.con-class.page--grow .topbar > .topbar-right > li > a:hover,
+.con-class.page--grow .topbar > .topbar-right > li > a:active,
+.con-class.page--grow .topbar > .topbar-right > li > a:focus,
+.con-class.page--urbanized .topbar > .topbar-right > li > a:hover,
+.con-class.page--urbanized .topbar > .topbar-right > li > a:active,
+.con-class.page--urbanized .topbar > .topbar-right > li > a:focus,
+.con-class.page--mapped .topbar > .topbar-right > li > a:hover,
+.con-class.page--mapped .topbar > .topbar-right > li > a:active,
+.con-class.page--mapped .topbar > .topbar-right > li > a:focus,
+.con-class.page--grow .topbar > .topbar-right .search-button,
+.con-class.page--urbanized .topbar > .topbar-right .search-button,
+.con-class.page--mapped .topbar > .topbar-right .search-button {
+  color: #fff;
+}
+.con-class.page--dished .topbar > .topbar-left > li > a {width: 200px;
+  height: 80px;
+  background-image: url(http://dailyhive.com/assets/dished-0c2b70e0c0b3fe5183c654e23862a137388e7167c912cf28c595ebdebace770d.svg);
+  background-position: 0 -327px;
+  background-size: 101%;
+  margin-top: -7px;
+}
+.con-class.page--grow .topbar > .topbar-left > li > a {
+  width: 120px;
+  height: 50px;
+  background-image: url(http://dailyhive.com/assets/dh_logos-a6678af8cab0ce4030fa27989f65a21e843b95cb6e8627185afb7b89ea595562.svg);
+  background-position: 0 -1032px;
+  background-size: 200%;
+}
+.con-class.page--urbanized .topbar > .topbar-left > li > a {
+  width: 200px;
+  height: 48px;
+  background-image: url(http://dailyhive.com/assets/urbanized-81353cb5c6f1e2bb96ee97b1f1364e4f7e42e3ee579e28e22033df7bac4ed89f.svg);
+  background-position: 0 -587px;
+  background-size: 150%;
+}
+.con-class.page--mapped .topbar > .topbar-left > li > a {
+  width: 135px;
+  height: 40px;
+  background-image: url(http://dailyhive.com/assets/dh_logos-a6678af8cab0ce4030fa27989f65a21e843b95cb6e8627185afb7b89ea595562.svg);background-position: 0 -928px;
+  background-size: 123%;
+  margin-top: 10px;
+}
+.con-class.page--video .topbar > .topbar-left > li > a {
+  width: 135px;
+  height: 40px;
+  background-image: url(http://dailyhive.com/assets/dh_logos-a6678af8cab0ce4030fa27989f65a21e843b95cb6e8627185afb7b89ea595562.svg);
+  background-position: 0 -1234px;
+  background-size: 178%;
+  margin-top: 3px;
+}
+.con-class.page--grow .topbar > .topbar-right > li.nav-dailyhive a,
+.con-class.page--urbanized .topbar > .topbar-right > li.nav-dailyhive a,
+.con-class.page--mapped .topbar > .topbar-right > li.nav-dailyhive a {
+  background-image: url(http://dailyhive.com/assets/dh_logos-a6678af8cab0ce4030fa27989f65a21e843b95cb6e8627185afb7b89ea595562.svg);
+  background-position: 0 -92px;
+  background-size: 183%;
+}
+.con-class.page--grow .topbar > .topbar-right > li.nav-dished a,
+.con-class.page--urbanized .topbar > .topbar-right > li.nav-dished a,
+.con-class.page--mapped .topbar > .topbar-right > li.nav-dished a {
+  background-image: url(http://dailyhive.com/assets/dished-0c2b70e0c0b3fe5183c654e23862a137388e7167c912cf28c595ebdebace770d.svg);
+  background-position: 0 -948px;
+  background-size: 130%;
+}
+.con-class.page--grow .topbar > .topbar-right > li.nav-grow a,
+.con-class.page--urbanized .topbar > .topbar-right > li.nav-grow a,
+.con-class.page--mapped .topbar > .topbar-right > li.nav-grow a {
+  background-image: url(http://dailyhive.com/assets/dh_logos-a6678af8cab0ce4030fa27989f65a21e843b95cb6e8627185afb7b89ea595562.svg);background-position: 0 -859px;
+  background-size: 190%;
+}
+.con-class.page--grow .topbar > .topbar-right > li.nav-urbanized a,
+.con-class.page--urbanized .topbar > .topbar-right > li.nav-urbanized a,
+.con-class.page--mapped .topbar > .topbar-right > li.nav-urbanized a {
+  background-image: url(http://dailyhive.com/assets/urbanized-81353cb5c6f1e2bb96ee97b1f1364e4f7e42e3ee579e28e22033df7bac4ed89f.svg);
+  background-position: 0 -181px;
+  background-size: 170%;
+}
+.con-class.page--grow .topbar > .topbar-right > li.nav-mapped a,
+.con-class.page--urbanized .topbar > .topbar-right > li.nav-mapped a,
+.con-class.page--mapped .topbar > .topbar-right > li.nav-mapped a {
+  background-image: url(http://dailyhive.com/assets/dh_logos-a6678af8cab0ce4030fa27989f65a21e843b95cb6e8627185afb7b89ea595562.svg);
+  background-position: 0 -868px;
+  background-size: 130%;
+}
+.con-class.page--grow .topbar > .topbar-right > li.nav-video a,
+.con-class.page--urbanized .topbar > .topbar-right > li.nav-video a,
+.con-class.page--mapped .topbar > .topbar-right > li.nav-video a {
+  background-image: url(http://dailyhive.com/assets/dh_logos-a6678af8cab0ce4030fa27989f65a21e843b95cb6e8627185afb7b89ea595562.svg);
+  background-position: 0 -1194px;
+  background-size: 200%;
+}
+
+/* Custom Hamberger Styles */
+.hamburger {
+  position: absolute;
+  right: 5px;
+  top: 0;
+  margin-top: 12px;
+  padding: 5px 5px 0 5px;
+  z-index: 999999;
+  opacity: .4;
+}
+.hamburger-inner, 
+.hamburger-inner::after, 
+.hamburger-inner::before {
+  border-radius: 2px;
+}
+.hamburger-box, 
+.hamburger-inner, 
+.hamburger-inner::after, 
+.hamburger-inner::before {
+  width: 36px;
+}
+.hamburger:hover,
+.hamburger:active {
+  opacity: 1;
+}
+.hamburger .hamburger-inner, 
+.hamburger .hamburger-inner::before, 
+.hamburger .hamburger-inner::after {
+  background-color: #000;
+}
+.con-class.page--dished .hamburger .hamburger-inner, 
+.con-class.page--dished .hamburger .hamburger-inner::before, 
+.con-class.page--dished .hamburger .hamburger-inner::after,
+.con-class.page--grow .hamburger .hamburger-inner, 
+.con-class.page--grow .hamburger .hamburger-inner::before, 
+.con-class.page--grow .hamburger .hamburger-inner::after,
+.con-class.page--urbanized .hamburger .hamburger-inner, 
+.con-class.page--urbanized .hamburger .hamburger-inner::before, 
+.con-class.page--urbanized .hamburger .hamburger-inner::after,
+.con-class.page--mapped .hamburger .hamburger-inner, 
+.con-class.page--mapped .hamburger .hamburger-inner::before, 
+.con-class.page--mapped .hamburger .hamburger-inner::after {
+
+  background-color: #fff !important;
+}
+
+/* Header Desktop Menu */
+.header-menu {
+  visibility: hidden;
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  margin-top: -6px;
+  padding: 0;
+  background-color: #fff;
+  z-index: 999999;
+  border: 1px solid rgba(0,0,0,0);
+  border-radius: 0 0 3px 3px;
+  border-top: 0 !important;
+  opacity: .7;
+  box-shadow: 0 6px 11px 0 rgba(0,0,0,.03);
+  transition: visibility 0s, opacity .15s linear, transform .5s, border .9s;
+}
+.header-menu.show-menu {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(0, 6px);
+  border: 1px solid rgba(0,0,0,.085);
+}
+.header-menu-inner {
+  padding: 12px;
+}
+
+/* "mega menu" */
+.mega-menu-dropdown {
+  height: auto;
+  max-height: 350px;
+  background: #fff;
+}
+.mega-menu-dropdown ul {
+  list-style-type: none;
+  display: block;
+  min-height: 280px;
+  border-right: 1px solid rgba(0,0,0,.1);
+  padding-top: 20px;
+  margin: 0 0 0 .5rem;
+}
+.mega-menu-dropdown ul > li {
+  display: block;
+  padding: 4px 0;
+}
+.mega-menu-dropdown ul > li a {
+  display: block;
+  color: #000;
+  text-decoration: none;
+}
+.mega-menu-dropdown .logo {
+  width: 190px;
+  height: 45px;
+  background-repeat: no-repeat;
+  background-image: url(http://dailyhive.com/assets/dh_cities_black-093173b8f9fab72e20e8453fff0eb31a8a6d3760ba950cb7a6f2502b4a5c2c9e.svg);
+  background-size: 100%;
+  display: inline-block;
+  margin: 20px 20px 0 0;
+}
+.mega-menu-dropdown .logo.calgary {
+  background-position: 0 -420px;
+}
+.mega-menu-dropdown .logo.montreal {
+  background-position: 0 -551px;
+}
+.mega-menu-dropdown .logo.toronto {
+  background-position: 0 -485px;
+}
+.con-class.page--dished .mega-menu-dropdown .logo {
+  width: 168px;
+  height: 63px;
+  background-image: url(http://dailyhive.com/assets/dished-0c2b70e0c0b3fe5183c654e23862a137388e7167c912cf28c595ebdebace770d.svg);
+}
+.con-class.page--dished .mega-menu-dropdown .logo.calgary {
+  background-position: 0 -768px;
+}
+.con-class.page--dished .mega-menu-dropdown .logo.montreal {
+  background-position: 0 -912px;
+}
+.con-class.page--dished .mega-menu-dropdown .logo.toronto {
+  background-position: 0 -840px;
+}
+.con-class.page--urbanized .mega-menu-dropdown .logo {
+  width: 200px;
+  height: 48px;
+  background-size: 150%;
+  background-image: url(http://dailyhive.com/assets/urbanized-81353cb5c6f1e2bb96ee97b1f1364e4f7e42e3ee579e28e22033df7bac4ed89f.svg);
+}
+.con-class.page--urbanized .mega-menu-dropdown .logo.calgary {
+  background-position: 0 -53px;
+}
+.con-class.page--urbanized .mega-menu-dropdown .logo.montreal {
+  background-position: 0 -161px;
+}
+.con-class.page--urbanized .mega-menu-dropdown .logo.toronto {
+  background-position: 0 -107px;
+}
+
+.mega-menu-dropdown ul > li.in-active > a {
+  opacity: .2;
+}
+.mega-menu-dropdown ul > li.in-active > a:hover,
+.mega-menu-dropdown ul > li.in-active > a:focus {
+  opacity: 1;
+}
+.select-city li .logo.location {
+  margin: 0 0 5px 20px;
+}
+.mega-menu-dropdown ul.categories li a {
+  padding: 0 0 0 10px;
+  border-left: 4px solid #fff;
+}
+.mega-menu-dropdown ul.categories li a:hover {
+  border-left: 4px solid #0c6ac0;
+}
+
+/* Imgaes */
+.paddTop {
+  padding-top: 12px !important;
+}
+.paddTop.first {
+  padding-top: 0 !important;
+}
+.paddBott {
+  padding-bottom: 16px !important;
+}
+
+/* Header Gallary */
+.header-gallary {
+  font-size: 1.2em;
+  line-height: 1.2em;
+  margin: 0 0 1rem 0;
+  padding: 0;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-family: open sans,Helvetica,Roboto,Arial,sans-serif;
+  font-style: normal;
+  color: inherit;
+  text-rendering: optimizeLegibility;
+  text-align: left;
+}
+.sprite.trend.medium {
+  width: 32px;
+  height: 32px;
+  background-position: -62px -1050px;
+  margin-right: 8px;
+  top: -2px;
+}
+.sprite.trend {
+  float: left;
+  position: relative;
+}
+.sprite {
+  background-image: url(http://dailyhive.com/assets/sprite-039163dd456a61d01ba9201de96c7d72ecf4e13c999feffc131ac9e5f064eceb.png);
+  background-repeat: no-repeat;
+}
